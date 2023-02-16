@@ -1,86 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
   TextInput,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
   Keyboard,
   Platform,
 } from 'react-native';
+import { styles } from './RegistrationScreen.styled';
 
 export const RegistrationScreen = () => {
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isFocusedLogin, setFocusedLogin] = useState(false);
+  const [isFocusedEmail, setFocusedEmail] = useState(false);
+  const [isFocusedPassword, setFocusedPassword] = useState(false);
+
+  const handleLogin = text => setLogin(text);
+  const handleEmail = text => setEmail(text);
+  const handlePassword = text => setPassword(text);
+
+  const handleFocusLogin = () => setFocusedLogin(true);
+  const handleBlurLogin = () => setFocusedLogin(false);
+
+  const handleFocusEmail = () => setFocusedEmail(true);
+  const handleBlurEmail = () => setFocusedEmail(false);
+
+  const handleFocusPassword = () => setFocusedPassword(true);
+  const handleBlurPassword = () => setFocusedPassword(false);
+
+  const handleSubmit = () => {
+    if (!login || !email || !password) return;
+    console.log({ login, email, password });
+    setLogin('');
+    setEmail('');
+    setPassword('');
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
-      <View style={styles.form}>
-        <Text style={styles.title}>Registration</Text>
-        <TextInput style={styles.input} placeholder="Login" />
-        <TextInput style={styles.input} placeholder="Адрес электронной почты" />
-        <TextInput
-          style={{ ...styles.input, marginBottom: 0 }}
-          secureTextEntry={true}
-          placeholder="Пароль"
-        />
-        <TouchableOpacity activeOpacity={0.8} style={styles.button}>
-          <Text style={styles.buttonTitle}>Зарегистрироваться</Text>
-        </TouchableOpacity>
-        <Text style={styles.redirectTitle}>Уже есть аккаунт? Войти</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.form}>
+          <Text style={styles.title}>Регистрация</Text>
+          <TextInput
+            onFocus={handleFocusLogin}
+            onBlur={handleBlurLogin}
+            onChangeText={handleLogin}
+            value={login}
+            style={{
+              ...styles.input,
+              borderColor: isFocusedLogin ? '#FF6C00' : '#E8E8E8',
+            }}
+            placeholder="Login"
+          />
+          <TextInput
+            onFocus={handleFocusEmail}
+            onBlur={handleBlurEmail}
+            onChangeText={handleEmail}
+            value={email}
+            style={{
+              ...styles.input,
+              borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
+            }}
+            placeholder="Адрес электронной почты"
+          />
+          <TextInput
+            onFocus={handleFocusPassword}
+            onBlur={handleBlurPassword}
+            onChangeText={handlePassword}
+            value={password}
+            style={{
+              ...styles.input,
+              marginBottom: 0,
+              borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
+            }}
+            secureTextEntry={true}
+            placeholder="Пароль"
+          />
+          <TouchableOpacity
+            onPress={handleSubmit}
+            activeOpacity={0.8}
+            style={styles.button}
+          >
+            <Text style={styles.buttonTitle}>Зарегистрироваться</Text>
+          </TouchableOpacity>
+          <Text style={styles.redirectTitle}>Уже есть аккаунт? Войти</Text>
+        </View>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  form: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 16,
-    paddingBottom: 78,
-  },
-  title: {
-    marginBottom: 32,
-    fontWeight: '500',
-    lineHeight: 35,
-    fontSize: 32,
-    textAlign: 'center',
-  },
-  input: {
-    paddingLeft: 16,
-    marginBottom: 16,
-    height: 50,
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#212121',
-    borderWidth: 1,
-    borderColor: '#E8E8E8',
-    borderRadius: 8,
-    backgroundColor: '#F6F6F6',
-  },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 43,
-    paddingVertical: 16,
-    backgroundColor: '#FF6C00',
-    borderRadius: 100,
-  },
-  buttonTitle: {
-    color: '#ffffff',
-    fontSize: 16,
-    lineHeight: 19,
-  },
-  redirectTitle: {
-    marginTop: 16,
-    textAlign: 'center',
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#1B4371',
-  },
-});
