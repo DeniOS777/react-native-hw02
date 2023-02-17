@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     paddingHorizontal: 16,
-    // paddingBottom: 78,
   },
   title: {
     marginBottom: 32,

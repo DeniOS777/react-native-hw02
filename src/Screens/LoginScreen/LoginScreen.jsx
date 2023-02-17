@@ -16,27 +16,27 @@ export const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [isFocusedEmail, setFocusedEmail] = useState(false);
   const [isFocusedPassword, setFocusedPassword] = useState(false);
-  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [isSpaceKeyboard, setIsSpaceKeyboard] = useState(false);
 
   const handleEmail = text => setEmail(text);
   const handlePassword = text => setPassword(text);
 
   const handleFocusEmail = () => {
     setFocusedEmail(true);
-    setIsShowKeyboard(true);
+    setIsSpaceKeyboard(true);
   };
   const handleBlurEmail = () => {
     setFocusedEmail(false);
-    setIsShowKeyboard(false);
+    setIsSpaceKeyboard(false);
   };
 
   const handleFocusPassword = () => {
     setFocusedPassword(true);
-    setIsShowKeyboard(true);
+    setIsSpaceKeyboard(true);
   };
   const handleBlurPassword = () => {
     setFocusedPassword(false);
-    setIsShowKeyboard(false);
+    setIsSpaceKeyboard(false);
   };
 
   const handleSubmit = () => {
@@ -53,7 +53,7 @@ export const LoginScreen = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
-          style={{ ...styles.form, marginBottom: isShowKeyboard ? -91 : 111 }}
+          style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -91 : 111 }}
         >
           <Text style={styles.title}>Войти</Text>
           <TextInput
