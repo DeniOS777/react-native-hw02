@@ -1,15 +1,12 @@
-import {
-  StyleSheet,
-  View,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { RegistrationScreen } from './src/Screens/RegistrationScreen/RegistrationScreen';
+import { LoginScreen } from './src/Screens/LoginScreen/LoginScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RegistrationScreen />
+      {/* <RegistrationScreen /> */}
+      <LoginScreen />
     </View>
   );
 }

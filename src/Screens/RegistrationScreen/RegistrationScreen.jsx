@@ -18,19 +18,38 @@ export const RegistrationScreen = () => {
   const [isFocusedLogin, setFocusedLogin] = useState(false);
   const [isFocusedEmail, setFocusedEmail] = useState(false);
   const [isFocusedPassword, setFocusedPassword] = useState(false);
+  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
   const handleLogin = text => setLogin(text);
   const handleEmail = text => setEmail(text);
   const handlePassword = text => setPassword(text);
 
-  const handleFocusLogin = () => setFocusedLogin(true);
-  const handleBlurLogin = () => setFocusedLogin(false);
+  const handleFocusLogin = () => {
+    setFocusedLogin(true);
+    setIsShowKeyboard(true);
+  };
+  const handleBlurLogin = () => {
+    setFocusedLogin(false);
+    setIsShowKeyboard(false);
+  };
 
-  const handleFocusEmail = () => setFocusedEmail(true);
-  const handleBlurEmail = () => setFocusedEmail(false);
+  const handleFocusEmail = () => {
+    setFocusedEmail(true);
+    setIsShowKeyboard(true);
+  };
+  const handleBlurEmail = () => {
+    setFocusedEmail(false);
+    setIsShowKeyboard(false);
+  };
 
-  const handleFocusPassword = () => setFocusedPassword(true);
-  const handleBlurPassword = () => setFocusedPassword(false);
+  const handleFocusPassword = () => {
+    setFocusedPassword(true);
+    setIsShowKeyboard(true);
+  };
+  const handleBlurPassword = () => {
+    setFocusedPassword(false);
+    setIsShowKeyboard(false);
+  };
 
   const handleSubmit = () => {
     if (!login || !email || !password) return;
@@ -46,7 +65,9 @@ export const RegistrationScreen = () => {
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.form}>
+        <View
+          style={{ ...styles.form, marginBottom: isShowKeyboard ? -98 : 78 }}
+        >
           <Text style={styles.title}>Регистрация</Text>
           <TextInput
             onFocus={handleFocusLogin}
