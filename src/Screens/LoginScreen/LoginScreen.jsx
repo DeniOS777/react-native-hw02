@@ -15,9 +15,13 @@ export const LoginScreen = () => {
   const [isFocusedEmail, setFocusedEmail] = useState(false);
   const [isFocusedPassword, setFocusedPassword] = useState(false);
   const [isSpaceKeyboard, setIsSpaceKeyboard] = useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   const handleEmail = text => setEmail(text);
-  const handlePassword = text => setPassword(text);
+  const handlePassword = text => {
+    if (!text) setIsShowPassword(false);
+    setPassword(text);
+  };
 
   const handleFocusEmail = () => {
     setFocusedEmail(true);
@@ -35,6 +39,11 @@ export const LoginScreen = () => {
   const handleBlurPassword = () => {
     setFocusedPassword(false);
     setIsSpaceKeyboard(false);
+  };
+
+  const showPassword = () => {
+    if (!password) return;
+    setIsShowPassword(isShowPassword => !isShowPassword);
   };
 
   const handleSubmit = () => {
@@ -64,19 +73,33 @@ export const LoginScreen = () => {
           }}
           placeholder="Адрес электронной почты"
         />
-        <TextInput
-          onFocus={handleFocusPassword}
-          onBlur={handleBlurPassword}
-          onChangeText={handlePassword}
-          value={password}
-          style={{
-            ...styles.input,
-            marginBottom: 0,
-            borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
-          }}
-          secureTextEntry={true}
-          placeholder="Пароль"
-        />
+
+        <View style={styles.inputWrapper}>
+          <TextInput
+            onFocus={handleFocusPassword}
+            onBlur={handleBlurPassword}
+            onChangeText={handlePassword}
+            maxLength={23}
+            value={password}
+            style={{
+              ...styles.input,
+              marginBottom: 0,
+              borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
+            }}
+            secureTextEntry={isShowPassword ? false : true}
+            placeholder="Пароль"
+          />
+          <TouchableOpacity
+            onPress={showPassword}
+            activeOpacity={0.8}
+            style={styles.buttonShowPassword}
+          >
+            <Text style={{ ...styles.buttonTitle, color: '#1B4371' }}>
+              Показать
+            </Text>
+          </TouchableOpacity>
+        </View>
+
         <TouchableOpacity
           onPress={handleSubmit}
           activeOpacity={0.8}
@@ -84,6 +107,7 @@ export const LoginScreen = () => {
         >
           <Text style={styles.buttonTitle}>Войти</Text>
         </TouchableOpacity>
+
         <Text style={styles.redirectTitle}>
           Нет аккаунта? Зарегистрироваться
         </Text>

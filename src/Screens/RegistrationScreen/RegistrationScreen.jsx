@@ -132,6 +132,7 @@ export const RegistrationScreen = () => {
         >
           <Text style={styles.buttonTitle}>Зарегистрироваться</Text>
         </TouchableOpacity>
+
         <Text style={styles.redirectTitle}>Уже есть аккаунт? Войти</Text>
       </View>
     </KeyboardAvoidingView>

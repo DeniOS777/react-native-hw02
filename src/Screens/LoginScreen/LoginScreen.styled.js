@@ -20,6 +20,10 @@ export const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: 'center',
   },
+  inputWrapper: {
+    position: 'relative',
+    justifyContent: 'center',
+  },
   input: {
     paddingLeft: 16,
     marginBottom: 16,
@@ -38,6 +42,13 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     backgroundColor: '#FF6C00',
     borderRadius: 100,
+  },
+  buttonShowPassword: {
+    position: 'absolute',
+    right: 0,
+    alignItems: 'center',
+    paddingVertical: 15,
+    paddingRight: 16,
   },
   buttonTitle: {
     color: '#ffffff',
