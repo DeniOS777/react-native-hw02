@@ -5,8 +5,6 @@ import {
   View,
   TextInput,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
   Platform,
 } from 'react-native';
 import { styles } from './RegistrationScreen.styled';
@@ -64,56 +62,54 @@ export const RegistrationScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View
-          style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -98 : 78 }}
+      <View
+        style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -98 : 78 }}
+      >
+        <Text style={styles.title}>Регистрация</Text>
+        <TextInput
+          onFocus={handleFocusLogin}
+          onBlur={handleBlurLogin}
+          onChangeText={handleLogin}
+          value={login}
+          style={{
+            ...styles.input,
+            borderColor: isFocusedLogin ? '#FF6C00' : '#E8E8E8',
+          }}
+          placeholder="Login"
+        />
+        <TextInput
+          onFocus={handleFocusEmail}
+          onBlur={handleBlurEmail}
+          onChangeText={handleEmail}
+          value={email}
+          style={{
+            ...styles.input,
+            borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
+          }}
+          placeholder="Адрес электронной почты"
+        />
+        <TextInput
+          onFocus={handleFocusPassword}
+          onBlur={handleBlurPassword}
+          onChangeText={handlePassword}
+          value={password}
+          style={{
+            ...styles.input,
+            marginBottom: 0,
+            borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
+          }}
+          secureTextEntry={true}
+          placeholder="Пароль"
+        />
+        <TouchableOpacity
+          onPress={handleSubmit}
+          activeOpacity={0.8}
+          style={styles.button}
         >
-          <Text style={styles.title}>Регистрация</Text>
-          <TextInput
-            onFocus={handleFocusLogin}
-            onBlur={handleBlurLogin}
-            onChangeText={handleLogin}
-            value={login}
-            style={{
-              ...styles.input,
-              borderColor: isFocusedLogin ? '#FF6C00' : '#E8E8E8',
-            }}
-            placeholder="Login"
-          />
-          <TextInput
-            onFocus={handleFocusEmail}
-            onBlur={handleBlurEmail}
-            onChangeText={handleEmail}
-            value={email}
-            style={{
-              ...styles.input,
-              borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
-            }}
-            placeholder="Адрес электронной почты"
-          />
-          <TextInput
-            onFocus={handleFocusPassword}
-            onBlur={handleBlurPassword}
-            onChangeText={handlePassword}
-            value={password}
-            style={{
-              ...styles.input,
-              marginBottom: 0,
-              borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
-            }}
-            secureTextEntry={true}
-            placeholder="Пароль"
-          />
-          <TouchableOpacity
-            onPress={handleSubmit}
-            activeOpacity={0.8}
-            style={styles.button}
-          >
-            <Text style={styles.buttonTitle}>Зарегистрироваться</Text>
-          </TouchableOpacity>
-          <Text style={styles.redirectTitle}>Уже есть аккаунт? Войти</Text>
-        </View>
-      </TouchableWithoutFeedback>
+          <Text style={styles.buttonTitle}>Зарегистрироваться</Text>
+        </TouchableOpacity>
+        <Text style={styles.redirectTitle}>Уже есть аккаунт? Войти</Text>
+      </View>
     </KeyboardAvoidingView>
   );
 };

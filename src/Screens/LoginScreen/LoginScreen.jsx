@@ -5,8 +5,6 @@ import {
   View,
   TextInput,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
   Platform,
 } from 'react-native';
 import { styles } from './LoginScreen.styled';
@@ -51,47 +49,45 @@ export const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View
-          style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -91 : 111 }}
+      <View
+        style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -91 : 111 }}
+      >
+        <Text style={styles.title}>Войти</Text>
+        <TextInput
+          onFocus={handleFocusEmail}
+          onBlur={handleBlurEmail}
+          onChangeText={handleEmail}
+          value={email}
+          style={{
+            ...styles.input,
+            borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
+          }}
+          placeholder="Адрес электронной почты"
+        />
+        <TextInput
+          onFocus={handleFocusPassword}
+          onBlur={handleBlurPassword}
+          onChangeText={handlePassword}
+          value={password}
+          style={{
+            ...styles.input,
+            marginBottom: 0,
+            borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
+          }}
+          secureTextEntry={true}
+          placeholder="Пароль"
+        />
+        <TouchableOpacity
+          onPress={handleSubmit}
+          activeOpacity={0.8}
+          style={styles.button}
         >
-          <Text style={styles.title}>Войти</Text>
-          <TextInput
-            onFocus={handleFocusEmail}
-            onBlur={handleBlurEmail}
-            onChangeText={handleEmail}
-            value={email}
-            style={{
-              ...styles.input,
-              borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
-            }}
-            placeholder="Адрес электронной почты"
-          />
-          <TextInput
-            onFocus={handleFocusPassword}
-            onBlur={handleBlurPassword}
-            onChangeText={handlePassword}
-            value={password}
-            style={{
-              ...styles.input,
-              marginBottom: 0,
-              borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
-            }}
-            secureTextEntry={true}
-            placeholder="Пароль"
-          />
-          <TouchableOpacity
-            onPress={handleSubmit}
-            activeOpacity={0.8}
-            style={styles.button}
-          >
-            <Text style={styles.buttonTitle}>Войти</Text>
-          </TouchableOpacity>
-          <Text style={styles.redirectTitle}>
-            Нет аккаунта? Зарегистрироваться
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
+          <Text style={styles.buttonTitle}>Войти</Text>
+        </TouchableOpacity>
+        <Text style={styles.redirectTitle}>
+          Нет аккаунта? Зарегистрироваться
+        </Text>
+      </View>
     </KeyboardAvoidingView>
   );
 };
