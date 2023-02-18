@@ -17,10 +17,14 @@ export const RegistrationScreen = () => {
   const [isFocusedEmail, setFocusedEmail] = useState(false);
   const [isFocusedPassword, setFocusedPassword] = useState(false);
   const [isSpaceKeyboard, setIsSpaceKeyboard] = useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   const handleLogin = text => setLogin(text);
   const handleEmail = text => setEmail(text);
-  const handlePassword = text => setPassword(text);
+  const handlePassword = text => {
+    if (!text) setIsShowPassword(false);
+    setPassword(text);
+  };
 
   const handleFocusLogin = () => {
     setFocusedLogin(true);
@@ -47,6 +51,11 @@ export const RegistrationScreen = () => {
   const handleBlurPassword = () => {
     setFocusedPassword(false);
     setIsSpaceKeyboard(false);
+  };
+
+  const showPassword = () => {
+    if (!password) return;
+    setIsShowPassword(isShowPassword => !isShowPassword);
   };
 
   const handleSubmit = () => {
@@ -77,6 +86,7 @@ export const RegistrationScreen = () => {
           }}
           placeholder="Login"
         />
+
         <TextInput
           onFocus={handleFocusEmail}
           onBlur={handleBlurEmail}
@@ -88,19 +98,33 @@ export const RegistrationScreen = () => {
           }}
           placeholder="Адрес электронной почты"
         />
-        <TextInput
-          onFocus={handleFocusPassword}
-          onBlur={handleBlurPassword}
-          onChangeText={handlePassword}
-          value={password}
-          style={{
-            ...styles.input,
-            marginBottom: 0,
-            borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
-          }}
-          secureTextEntry={true}
-          placeholder="Пароль"
-        />
+
+        <View style={styles.inputWrapper}>
+          <TextInput
+            onFocus={handleFocusPassword}
+            onBlur={handleBlurPassword}
+            onChangeText={handlePassword}
+            maxLength={23}
+            value={password}
+            style={{
+              ...styles.input,
+              marginBottom: 0,
+              borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
+            }}
+            secureTextEntry={isShowPassword ? false : true}
+            placeholder="Пароль"
+          />
+          <TouchableOpacity
+            onPress={showPassword}
+            activeOpacity={0.8}
+            style={styles.buttonShowPassword}
+          >
+            <Text style={{ ...styles.buttonTitle, color: '#1B4371' }}>
+              Показать
+            </Text>
+          </TouchableOpacity>
+        </View>
+
         <TouchableOpacity
           onPress={handleSubmit}
           activeOpacity={0.8}
