@@ -45,8 +45,10 @@ export const styles = StyleSheet.create({
   },
   buttonShowPassword: {
     position: 'absolute',
-    right: 16,
+    right: 0,
     alignItems: 'center',
+    paddingVertical: 15,
+    paddingRight: 16,
   },
   buttonTitle: {
     color: '#ffffff',
