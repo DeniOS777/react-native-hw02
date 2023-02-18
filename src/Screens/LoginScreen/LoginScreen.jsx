@@ -50,7 +50,7 @@ export const LoginScreen = () => {
       style={styles.container}
     >
       <View
-        style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -91 : 111 }}
+        style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -239 : 0 }}
       >
         <Text style={styles.title}>Войти</Text>
         <TextInput

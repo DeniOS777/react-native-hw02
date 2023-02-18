@@ -7,6 +7,11 @@ export const styles = StyleSheet.create({
   },
   form: {
     paddingHorizontal: 16,
+    paddingTop: 32,
+    paddingBottom: 144,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
   },
   title: {
     marginBottom: 32,

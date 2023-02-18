@@ -63,7 +63,7 @@ export const RegistrationScreen = () => {
       style={styles.container}
     >
       <View
-        style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -98 : 78 }}
+        style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -173 : 0 }}
       >
         <Text style={styles.title}>Регистрация</Text>
         <TextInput
