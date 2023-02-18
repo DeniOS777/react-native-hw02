@@ -67,6 +67,8 @@ export const LoginScreen = () => {
           onBlur={handleBlurEmail}
           onChangeText={handleEmail}
           value={email}
+          keyboardType="email-address"
+          placeholderTextColor="#BDBDBD"
           style={{
             ...styles.input,
             borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
@@ -82,6 +84,8 @@ export const LoginScreen = () => {
             onChangeText={handlePassword}
             maxLength={23}
             value={password}
+            keyboardType="default"
+            placeholderTextColor="#BDBDBD"
             style={{
               ...styles.input,
               marginBottom: 0,

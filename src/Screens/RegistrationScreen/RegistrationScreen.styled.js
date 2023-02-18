@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   form: {
+    position: 'relative',
     paddingHorizontal: 16,
     paddingTop: 92,
     paddingBottom: 78,

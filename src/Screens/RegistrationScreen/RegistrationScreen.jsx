@@ -75,11 +75,28 @@ export const RegistrationScreen = () => {
         style={{ ...styles.form, marginBottom: isSpaceKeyboard ? -173 : 0 }}
       >
         <Text style={styles.title}>Регистрация</Text>
+
+        <View
+          style={{
+            position: 'absolute',
+            top: -60,
+            alignSelf: 'center',
+            width: 120,
+            height: 120,
+            backgroundColor: '#F6F6F6',
+            borderRadius: 16,
+          }}
+        >
+          <TextInput />
+        </View>
+
         <TextInput
           onFocus={handleFocusLogin}
           onBlur={handleBlurLogin}
           onChangeText={handleLogin}
           value={login}
+          keyboardType="default"
+          placeholderTextColor="#BDBDBD"
           style={{
             ...styles.input,
             borderColor: isFocusedLogin ? '#FF6C00' : '#E8E8E8',
@@ -93,6 +110,8 @@ export const RegistrationScreen = () => {
           onBlur={handleBlurEmail}
           onChangeText={handleEmail}
           value={email}
+          keyboardType="email-address"
+          placeholderTextColor="#BDBDBD"
           style={{
             ...styles.input,
             borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
@@ -108,6 +127,8 @@ export const RegistrationScreen = () => {
             onChangeText={handlePassword}
             maxLength={23}
             value={password}
+            keyboardType="default"
+            placeholderTextColor="#BDBDBD"
             style={{
               ...styles.input,
               marginBottom: 0,
