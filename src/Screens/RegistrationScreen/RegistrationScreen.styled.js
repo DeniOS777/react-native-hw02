@@ -33,7 +33,6 @@ export const styles = StyleSheet.create({
     color: '#212121',
     borderWidth: 1,
     borderRadius: 8,
-    backgroundColor: '#F6F6F6',
   },
   button: {
     alignItems: 'center',

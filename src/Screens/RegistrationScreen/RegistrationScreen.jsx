@@ -83,6 +83,7 @@ export const RegistrationScreen = () => {
           style={{
             ...styles.input,
             borderColor: isFocusedLogin ? '#FF6C00' : '#E8E8E8',
+            backgroundColor: isFocusedLogin ? '#ffffff' : '#F6F6F6',
           }}
           placeholder="Login"
         />
@@ -95,6 +96,7 @@ export const RegistrationScreen = () => {
           style={{
             ...styles.input,
             borderColor: isFocusedEmail ? '#FF6C00' : '#E8E8E8',
+            backgroundColor: isFocusedEmail ? '#ffffff' : '#F6F6F6',
           }}
           placeholder="Адрес электронной почты"
         />
@@ -110,6 +112,7 @@ export const RegistrationScreen = () => {
               ...styles.input,
               marginBottom: 0,
               borderColor: isFocusedPassword ? '#FF6C00' : '#E8E8E8',
+              backgroundColor: isFocusedPassword ? '#ffffff' : '#F6F6F6',
             }}
             secureTextEntry={isShowPassword ? false : true}
             placeholder="Пароль"
