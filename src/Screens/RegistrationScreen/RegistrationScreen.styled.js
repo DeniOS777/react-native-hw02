@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 32,
-    fontWeight: '500',
+    fontFamily: 'Roboto-Medium',
     lineHeight: 35,
     fontSize: 32,
     textAlign: 'center',
@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
     marginBottom: 16,
     height: 50,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
     lineHeight: 19,
     color: '#212121',
@@ -51,13 +52,15 @@ export const styles = StyleSheet.create({
     paddingRight: 16,
   },
   buttonTitle: {
-    color: '#ffffff',
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
     lineHeight: 19,
+    color: '#ffffff',
   },
   redirectTitle: {
     marginTop: 16,
     textAlign: 'center',
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
     lineHeight: 19,
     color: '#1B4371',
