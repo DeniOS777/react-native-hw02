@@ -1,9 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
+  containerPage: {
+    flex: 1,
+  },
+  containerForm: {
     flex: 1,
     justifyContent: 'flex-end',
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    resizeMode: 'cover',
   },
   form: {
     position: 'relative',
