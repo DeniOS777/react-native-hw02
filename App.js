@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import {
   StyleSheet,
   View,
+  Text,
   TouchableWithoutFeedback,
   Keyboard,
   ImageBackground,
@@ -13,13 +14,15 @@ import { LoginScreen } from './src/Screens/LoginScreen';
 
 const imagePath = require('./assets/images/bg-photo.png');
 
+const fontsMap = {
+  'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+  'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
+};
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
-    'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
-  });
+  const [fontsLoaded] = useFonts(fontsMap);
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -35,8 +38,8 @@ export default function App() {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <ImageBackground source={imagePath} style={styles.image}>
-          <RegistrationScreen />
-          {/* <LoginScreen /> */}
+          {/* <RegistrationScreen /> */}
+          <LoginScreen />
         </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
